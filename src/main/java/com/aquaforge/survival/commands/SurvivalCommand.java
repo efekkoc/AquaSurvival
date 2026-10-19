@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * Master Survival & Graves Command Controller.
+ * Master Survival, Spawn Protection & Graves Command Controller.
  * 
  * @author Turgut Efekan Koç (@efekkoc) - Founder & Chief Architect
  */
@@ -47,17 +47,35 @@ public class SurvivalCommand implements CommandExecutor {
             return true;
         }
 
+        if (args.length > 0 && args[0].equalsIgnoreCase("setspawn")) {
+            handleSetSpawn(player, prefix);
+            return true;
+        }
+
         // Default /survival info
         player.sendMessage(MiniMessage.miniMessage().deserialize("<dark_gray>▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬</dark_gray>"));
         player.sendMessage(MiniMessage.miniMessage().deserialize("   <gradient:#00c853:#00e5ff><bold>AquaForge Survival Suite v1.0.0</bold></gradient>"));
+        player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• 🛡️ Spawn Sanctuary: <green>Active</green> (No Hunger, No Fall, No PvP)</gray>"));
+        player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• 🌙 One-Player Sleep: <green>Active</green> (1 player skips night)</gray>"));
         player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• 🪦 1.21 Display Graves: <green>Active</green> (Items safe for 30m)</gray>"));
-        player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• 🌙 Dynamic Sleep Vote: <green>Active</green> (BossBar countdown)</gray>"));
         player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• ⛏️ Silk Touch Spawners: <green>Active</green></gray>"));
         player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• 🍃 Fast Leaf Decay: <green>Active</green></gray>"));
         player.sendMessage(MiniMessage.miniMessage().deserialize("<gray>• 🪜 Wool Elevators: <green>Active</green> (Jump / Sneak)</gray>"));
         player.sendMessage(MiniMessage.miniMessage().deserialize("<dark_gray>▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬</dark_gray>"));
 
         return true;
+    }
+
+    private void handleSetSpawn(Player player, String prefix) {
+        if (!player.hasPermission("aquasurvival.admin")) {
+            player.sendMessage(MiniMessage.miniMessage().deserialize(prefix + "<red>Only administrators can set the spawn sanctuary!</red>"));
+            return;
+        }
+
+        plugin.getSpawnProtectionManager().setSpawnLocation(player.getLocation());
+        player.sendMessage(MiniMessage.miniMessage().deserialize(
+                prefix + "<green>Spawn Sanctuary location successfully updated to your current coordinates!</green>"
+        ));
     }
 
     private void handleBack(Player player, String prefix) {

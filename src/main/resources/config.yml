@@ -8,18 +8,35 @@
 branding:
   prefix: "<gradient:#00c853:#00e5ff><bold>AquaForge</bold></gradient> <dark_gray>▏</dark_gray> <green>Survival</green> <gray>»</gray> "
 
+spawn-protection:
+  enabled: true
+  radius-blocks: 64.0
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  flags:
+    prevent-hunger: true          # Spawnda acıkmama ve sürekli tok kalma (20 food level + saturation)
+    prevent-fall-damage: true     # Spawnda yüksekten düşme hasarı almayı engelleme
+    prevent-pvp: true             # Spawnda oyuncuların birbirine vurmasını engelleme
+    prevent-damage: true          # Her türlü hasarı engelleme (lav, boğulma, ateş vb.)
+    prevent-block-break: true     # Spawnda yetkisiz blok kırmayı engelleme
+    prevent-block-place: true     # Spawnda yetkisiz blok koymayı engelleme
+    prevent-mob-spawning: true    # Spawnda canavar doğmasını engelleme
+
+sleep:
+  enabled: true
+  mode: "ONE_PLAYER"              # ONE_PLAYER (50-100 kişilik sunucular için 1 kişi yeterli) veya PERCENTAGE
+  min-players-needed: 1
+  needed-percent: 25
+  bossbar-countdown-seconds: 4
+
 graves:
   enabled: true
   expire-time-minutes: 30
   give-compass-on-respawn: true
   protect-from-other-players: true
   use-121-display-entities: true
-
-sleep:
-  enabled: true
-  needed-percent: 25 # percentage of players in world needing to sleep
-  bossbar-countdown-seconds: 5
-  bossbar-title: "<gradient:#ffd700:#ff9100><bold>SLEEP VOTE</bold></gradient> <gray>— Skipping night in %time%s...</gray>"
 
 mechanics:
   silk-touch-spawners: true
