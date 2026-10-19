@@ -1,0 +1,36 @@
+name: AquaSurvival
+version: 1.0.0
+main: com.aquaforge.survival.AquaSurvivalPlugin
+api-version: '1.20'
+author: Turgut Efekan Koç (efekkoc)
+description: Enterprise Survival & SMP Mechanics Engine by AquaForge
+website: https://github.com/aquaforge-mc
+softdepend:
+  - AquaMap
+  - AquaEconomy
+  - AquaChat
+  - AquaScoreboard
+
+commands:
+  survival:
+    description: Master survival management command
+    aliases: [smp, asurvival]
+    permission: aquasurvival.user
+  graves:
+    description: View your active death graves and recovery compasses
+    aliases: [grave, deathchest]
+    permission: aquasurvival.user
+  back:
+    description: Return to your previous death location
+    permission: aquasurvival.back
+
+permissions:
+  aquasurvival.user:
+    description: Allows player access to standard survival mechanics
+    default: true
+  aquasurvival.back:
+    description: Allows teleporting to recent death location
+    default: true
+  aquasurvival.admin:
+    description: Allows administrative management of survival systems
+    default: op

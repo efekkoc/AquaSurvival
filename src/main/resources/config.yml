@@ -1,0 +1,31 @@
+# ============================================================
+#   AquaForge Ecosystem — Survival Division
+#   Parent Brand: AquaForge (https://github.com/aquaforge-mc)
+#   Founder & Chief Architect: Turgut Efekan Koç (@efekkoc)
+#   Universal Compatibility: Paper 1.20.x – 1.21.11
+# ============================================================
+
+branding:
+  prefix: "<gradient:#00c853:#00e5ff><bold>AquaForge</bold></gradient> <dark_gray>▏</dark_gray> <green>Survival</green> <gray>»</gray> "
+
+graves:
+  enabled: true
+  expire-time-minutes: 30
+  give-compass-on-respawn: true
+  protect-from-other-players: true
+  use-121-display-entities: true
+
+sleep:
+  enabled: true
+  needed-percent: 25 # percentage of players in world needing to sleep
+  bossbar-countdown-seconds: 5
+  bossbar-title: "<gradient:#ffd700:#ff9100><bold>SLEEP VOTE</bold></gradient> <gray>— Skipping night in %time%s...</gray>"
+
+mechanics:
+  silk-touch-spawners: true
+  fast-leaf-decay: true
+  elevators:
+    enabled: true
+    block-type: "WHITE_WOOL"
+    max-floor-distance: 24
+  mob-heads-drop-chance-percent: 2.5
